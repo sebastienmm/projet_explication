@@ -1,0 +1,64 @@
+﻿Les principales commandes de Git
+
+Dépôt local: notre machine équipée de Git
+Dépôt distant ( dans notre cas): GitHub
+
+1- Initialisation de Git:
+
+$ git config --global user.name "<user.name>"
+$ git config --global user.email "<email>"
+
+Vérifier des paramètres de Git:
+$ git config --list
+
+Configuration de  la couleur des différentes branches:
+$ git config --global color.diff auto
+$ git config --global color.status auto
+$ git config --global color.branch auto
+
+Configuration de l'éditeur (par défaut c'est vim):
+$ git config --global core.editor <editeur>
+$ git config --global merge.tool <outil de merge>  (par defaut vimdiff)
+
+Création d'un dépot local, 2 possiblités:
+créer notre propre dépôt local
+cloner un depôt distant
+
+Nous allons utilisé la première optionet nous allons créer un répertoire qui va contenir notre projet.
+
+$ mkdir <répertoire de travail>
+$ cd <répertoire de travail>
+$ git init
+
+2- Récupération ou création d'un projet distant sur GitHub:
+
+2-1 Récupération d'un projet distant:
+
+Il faut aller sur votre compte github, selectionner le projet que vous voulez cloner puis cliquer sur code.
+A ce moment, vous allez voir l'url de votre projet en https, vous copier cette url puis vous tapez la commande suivante dans votre répertoire git:
+
+On pointe vers le dépôt distant:
+$git remote add <nom d'appel du dépôt> <url du projet> 
+
+Clonage du projet:
+$git clone <url du dépôt distant>
+
+2-2 Création d'un projet:
+
+Il faut aller sur le compte github, et cliquer sur le + dans l'angle droit de la page d'accueil.
+L'onglet new repository apparait, cliquer dessus:
+Choisissez un nom pour votre projet,restez en public
+Initialisez votre projet avec deux fichiers README et .gitignore
+Cliquez sur Create repository
+
+Le fichier .gitignore permet d'exclure certains type de fichier du dépôt en effet les fichiers générer lors de la compilation ou bien les fichiers produit lors des tests de l'application ne doivent pas être présents dans le dépôt.
+
+
+3- Premières commandes:
+
+Identification des branches d'un dépôt git:
+$git branch
+Création d'une nouvelle branche:
+$git branch <nom de la branche>
+Déplacement sur une autre branche:
+$git checkout <nom de la branche existante>
