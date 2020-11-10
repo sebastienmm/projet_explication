@@ -81,4 +81,45 @@ $git add <nom du fichier>
 Modification du fichier avec un éditeur de texte, vi par exemple. Puis enregistrons les modifications avec la commande suivante:
 $git commit -am "Message indiquant la modification que l'on a faite"
 
+Après avoir commité la modification, il faut maintenant la pousser sur le dépôt distant en tapant la commande suivante:
+$git push
+
+Pour récupérer les modifications qui ont été effectuées par un autre collègue sur la même branche et qui ont été poussées par celui-ci il faut taper la commande:
+$git pull
+
+4- Correction des erreurs sur le dépôt local:
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
