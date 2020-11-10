@@ -54,6 +54,8 @@ Cliquez sur Create repository
 Le fichier .gitignore permet d'exclure certains type de fichier du dépôt en effet les fichiers générer lors de la compilation ou bien les fichiers produit lors des tests de l'application ne doivent pas être présents dans le dépôt.
 
 
+
+
 3- Premières commandes:
 
 Identification des branches d'un dépôt git:
@@ -62,3 +64,21 @@ Création d'une nouvelle branche:
 $git branch <nom de la branche>
 Déplacement sur une autre branche:
 $git checkout <nom de la branche existante>
+
+Git permet d'enregistrer les modifications effectuées au cours du temps de votre travail.
+
+Nous allons tout d'abord créér un fichier que nous allons modifier par la suite:
+
+On va d'abord se placer sur la branche qui nous intéresse:
+$git checkout <branche qui nous intéresse>
+
+Création d'un fichier :
+$touch <nom du fichier>
+
+Ajout du fichier dans l'index de notre dépôt local:
+$git add <nom du fichier>
+
+Modification du fichier avec un éditeur de texte, vi par exemple. Puis enregistrons les modifications avec la commande suivante:
+$git commit -am "Message indiquant la modification que l'on a faite"
+
+
