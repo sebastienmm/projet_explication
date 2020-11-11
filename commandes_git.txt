@@ -60,8 +60,10 @@ Le fichier .gitignore permet d'exclure certains type de fichier du dépôt en ef
 
 Identification des branches d'un dépôt git:
 $git branch
+
 Création d'une nouvelle branche:
 $git branch <nom de la branche>
+
 Déplacement sur une autre branche:
 $git checkout <nom de la branche existante>
 
@@ -128,6 +130,7 @@ $git stash apply
 
 Si plusieurs remises ont été effectuées, nous pouvons obtenir la liste en faisant :
 $git stash list
+
 Pour choisir la remise qui nous intéresse:
 $git stash apply stash@{1}
 
