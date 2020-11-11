@@ -97,6 +97,92 @@ Dans le dépôt local se trouve  zones majeures :
 Pour accéder à l'ensemble des actions référencées dans le repository sous la forme de commits identifiés par un sha (code), il faut taper la commande suivante:
 $git log ou $git reflog (informations basiques)
 
+4-1 Création d'une branche par erreur:
+
+4-1-1 sans modification à l'intérieur:
+
+Tout d'abord création d'une branche de test:
+$git branch brancheTest
+
+Pour la supprimer:
+$git branch -d brancheTest
+
+4-1-2 Avec modifications non commitées:
+
+Avec la commande suivante toutes les modifications non commitées seront supprimées:
+$git branch -D brancheTest 
+
+4-2 Modifications de la branche principale:
+
+4-2-1 Sans commit:
+
+Si les modifications n'ont pas été commitées alors nous pouvons faire une remise, c'est à dire mettre les modifications de côté afin de créer une nouvelle branche afin de mettre ces modifications à l'intérieur.
+$git stash
+
+En faisant un $git status nous pouvons voir que notre branche est à nouveau propre, nous créeons alors notre nouvelle branche.
+$git branch brancheCommit
+$git checkout brancheCommit
+
+On recupère enfin notre seule remise ou bien la dernière remise qui a été faite appartenant à une liste de remises.
+$git stash apply
+
+Si plusieurs remises ont été effectuées, nous pouvons obtenir la liste en faisant :
+$git stash list
+Pour choisir la remise qui nous intéresse:
+$git stash apply stash@{1}
+
+4-2-2 Avec commit:
+
+Récupérons l'identifiant du commit qui a été effectué:
+$git log
+
+On vérifie que l'on est bien sur la branche master puis l'on supprime le dernier commit:
+$git reset --hard HEAD^
+
+On crée notre nouvelle branche:
+$git branch brancheCommit
+$git checkout brancheCommit
+
+On va appliquer maintenant le commit que nous avons supprimer de la branche master sur la branche brancheCommit en utilisant le sha de ce même commit:
+$git reset --hard < 8 premiers caractères du sha >
+
+4-3 Modification du message du dernier commit:
+
+$git commit --amend -m "Nouveau message"
+
+4-4 Oublie d'un fichier dans le dernier commit:
+
+Nous allons ajouter le fichier à l'index puis ajouter ce fichier au dernier commit:
+$git add < fichier oublié >
+$git commit --amend --no-edit
+
+
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
