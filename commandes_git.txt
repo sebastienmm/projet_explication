@@ -214,8 +214,66 @@ $git reset < commit cible > --hard
 Avec --mixed comme paramètre:
 
 On peut revenir sur n'importe quel commit indiqué mais nous gardons l'historique.
+Il va garder un HEAD détaché et ne pas supprimer les modifications en cours.
 Si le commit n'est pas indiqué la commande va exécuter par défaut :
-$git reset --miwed HEAD~
+$git reset --mixed HEAD~ ou < sha d'un commit >
+
+Dans le cas o dse fichiers ont été indexés mais pas commités, cette commande permet une déindexation.
+
+Avec --soft comme paramètre:
+
+Ce paramètre permet de se placer sur un commit spécifique sans rien modifier.
+$git reset --soft < sha d'un commit >
+
+6-2 Conflits lors d'un merge:
+
+Git va nous avertir lorsqu'il rencontre des conflits et va demander de résoudre ces conflits.
+Les conflits peuvent être résolus avec un éditeur de texte. A la fin de cette résolution il faudra faire un git commit avec un message proposé que l'on peut évidemment modifier.
+
+6-3 Ajout d'un mauvais fichier dans un commit:
+
+Nous allons maintenant essayer de retrouver l'état de notre travail tel qu'il était dans le commit précédent mis pas en supprimant le dernier commit mais en créant un nouveau commit correspondant à l'état précédant avec cette commande:
+$git revert HEAD 
+
+7- Correction de commits raté:
+
+7-1 Journalisation:
+
+Git permet d'enregistrer un historique de toutes les actions que l'on a réalisé sur le projet.
+Nous pouvons retrouver l'historique des commits en faisant:
+$git log
+
+Les info de git log sont:
+- la date du commit
+- l'auteur
+- le message du commit 
+- le sha
+
+$git reflog
+
+Les infos de git reflog sont plus complètes puisque toutes les actions sont référencées:
+- modification de message d commit
+- merge
+- reset
+- checkout 
+...
+
+On peut très bien pointer sur un ancien commit sans rien toucher à l'historique en faisant :
+$git checkout < sha du commit >
+
+7-2 Qui a fait des modif dans ce fichier:
+
+Nous pouvons déterminer ligne par ligne qui a modifié un fichier et quand en tapant:
+$git blame < nom du fichier >
+
+7-3 Choisir des commits et les déplacer dans une autre branche:
+
+Cette va dupliquer des commits.
+
+Si nous avons fait plusieurs commits dans une branche et que nous ne voulons que certaines modifications qui correspondent à certains commits dans la branche master alors nous utiliserons cette commnande:  
+$git cherry-pick < sha du 1er commit > < sha du 3ème commit >
+
+8- Strusture de fichier de git:
 
 
 
@@ -237,4 +295,7 @@ $git reset --miwed HEAD~
 
 
 
- niveau de réinit 
+
+
+
+
