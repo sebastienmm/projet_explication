@@ -159,8 +159,63 @@ Nous allons ajouter le fichier à l'index puis ajouter ce fichier au dernier com
 $git add < fichier oublié >
 $git commit --amend --no-edit
 
+5- Correction des erreurs sur le dépot distant:
 
+5-1 Erreur de commit pushé:
+
+Pour supprimer un commit dans le dépot local et dans le dépot distant:
+$git revert HEAD^
+
+Cette commande supprime le dernier commit en créant un commit d'annulation.
  
+Cette commande peut écraser les dernières modifications d'un fichier dans un répertoire de travail.
+
+5-2 Problème d'accès à distance:
+
+5-2-1 Génération de clés SSH :
+
+ssh -keygen -t rsa -b 4096 -C "< adresse mail >"
+
+Deux clés ont été générées, elles se trouvent dans le répertoire .ssh de votre home dans votre terminal.
+
+5-2-2 Configuration de github:
+
+Il faut copier la clé publique id_rsa.pub puis la coller dans un ancadré en allant dans votre profil en haut à droite puis en cliquant sur settings puis sur SSH et GPG keys et enfin sur New SSH key.
+
+Sur votre dépôt local il faut taper les commandes suivante pour annuler l'authentification par mot de passe :
+Identification de la méthode d'authentification:
+$git remote -v 
+On obtient ceci, si l'authentification se fait par clés SSH 
+
+origin	git@github.com:< login >/<nom du projet>.git (fetch)
+origin	git@github.com:< login >/<nom du projet>.git (push)
+
+Sinon par authentification par mot de passe :
+
+origin	<url du projet>.git (fetch)
+origin	<url du projet>.git (push)
+
+Changement du mode d'authentification:
+$git remote set-url origin 	git@github.com:< login >/<nom du projet>.git
+
+6- La commande git reset:
+
+6-1 Trois niveaux de réinitialisation:
+
+Cette commande peut être appelée avec 3 niveaux de réinitialisation, elles permet de supprimer des modifications.
+
+Avec --hard comme paramètre:
+
+Tout est effacé, elle permet de revenir sur n'importe quel commit et effacer toutes les modifications qui ont été réalisées après.
+
+On revient au commit indiqué par commit cible:
+$git reset < commit cible > --hard 
+
+Avec --mixed comme paramètre:
+
+On peut revenir sur n'importe quel commit indiqué mais nous gardons l'historique.
+Si le commit n'est pas indiqué la commande va exécuter par défaut :
+$git reset --miwed HEAD~
 
 
 
@@ -182,10 +237,4 @@ $git commit --amend --no-edit
 
 
 
-
-
-
-
-
-
-
+ niveau de réinit 
