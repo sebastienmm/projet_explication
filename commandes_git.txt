@@ -275,21 +275,38 @@ $git cherry-pick < sha du 1er commit > < sha du 3ème commit >
 
 8- Strusture de fichier de git:
 
+Il existe trois types d'objets:
+
+- tree= forme de répertoire qui référence des tree et des blobs
+- commit = qui pointe vers un arbre spécifique et qui fige son état à un instant donné grace au sha
+- blob = Binary Large Objet, c'est un fichier pour chaque sha il existe une version du fichier  qui a été ajouté à l'index
 
 
+8-1 La fusion sous git:
 
+Pour réaliser une fusion de branche dans git, il faut toujours vérifier sur quelle branche nous nous trouvons, une fusion de branche se fait avec la commande git merge < nom de la branche que l'on veut fusionner avec la branche sur laquelle nous nous trouvons>
 
+La fusion va créer un nouveau commit sur la branche dans laquelle nous avons fusionné l'autre branche.
+Si des modifications ont été faites sur le même fichier mais dans des branches différentes la fusion va entraîner des conflits qui devront être résolus manuellement.
+ 
+8-2 Récuperation des modifications se trouvant sur le dépôt distant et envoie des modifications sur le dépôt distant:
 
+Pour récuperer les modifications se trouvant sur le dépôt distant dans le dépôt local nous allons taper la commande suivante qui est une concaténation de deux commandes:
+$git merge + $git fetch = $git pull
 
+Lors de la'exécution de $git pull un commit de fusion va être créé.
 
+Pour envoyer les modifications que nous avons fait sur le dépôt local vers le dépôt distant nous allons exécuter la commande suivante:
+$git push
+Nous pouvons aussi pousser seulement les modifications d'une seule branche si plusieurs branches sont modifiées sur notre dépôt local mais que nous ne voulons publier qu'une seule branche:
+$git push < branche >
 
+8-3 La commande git fetch:
 
+Cette commande permet de récupérer les modifications sur le depôt distant mais ne les fusionne pas avec votre travail en cours. Ces modifications vont être isolées en tant que contenu local existant. Pour les fusionner il faudra faire un git merge.
 
-
-
-
-
-
+$git fetch
+$git merge
 
 
 
