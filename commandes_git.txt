@@ -303,11 +303,31 @@ $git push < branche >
 
 8-3 La commande git fetch:
 
-Cette commande permet de récupérer les modifications sur le depôt distant mais ne les fusionne pas avec votre travail en cours. Ces modifications vont être isolées en tant que contenu local existant. Pour les fusionner il faudra faire un git merge.
+Cette commande permet de récupérer les modifications sur le depôt distant mais ne les fusionne pas avec votre travail en cours. Ces modifications vont être isolées en tant que contenu local existant. Pour les fusionner il faudra faire un git merge. Ces différentes commandes seront exécutées sur la branche locale.
 
 $git fetch
 $git merge
 
+9- Le rebasage:
+
+Le rebasage permet de transférer des changements dans une branche comme le git merge mais de façon un peu différente.
+La commande $git rebase va transférer les commits d'une branche dans une autre, les commits des deux branches vont alors être ensembles.
+Le merge d'une branche dans une autre va contrairement à la commande précédente créer un commit de fusion mais ne va pas intégrer l'ensemble des commits de l'ancienne branche dans la branche de fusion.
+
+9-1 Le rebasage interactif:
+
+Cette fonctionnalité permet de supprimer ou de modifier des commits, lorsque la commande : $git rebase -i est lancée un éditeur s'ouvre et vous propose plusieurs actions.
+Cette commande permet de nettoyer et de maintenir la cohérence de l'historique d'un projet.
+
+9-2 Modifications de l'ordre des commits:
+
+Pour modifier l'ordre des commits nous allons utiliser la commande git rebase -i encore mais en rajoutant une option.
+
+Si nous voulons modifier l'ordre des 3 derniers commits:
+
+$git rebase -i HEAD~3
+
+Un editeur s'ouvre et prose des options, il faut choisir l'option pick pour modifier l'ordre et l'option drop si vou voulez supprimmer un des commits.
 
 
 
