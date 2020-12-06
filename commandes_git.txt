@@ -390,8 +390,24 @@ La commande est la suivante:
 
 $git substree push -P <nom du répertoire> git@mon-serveur-git:group/projet.git master
 
+11- GitFlow:
 
+Il faut tout d'abord installer git-flow puis l'initialiser:
+$apt-get install git-flow
+$git flow init
 
+git flow va définir deux branches dans lesquelles il ne faut pas développer:
+	- la branche master qui correspond à l'environnement de production dans laquelle se trouvent toutes les versions officielles d'un projet
+	- la branche develop qui correspond à une copie de la branche master dans laquelle les tests vont se dérouler
+	
+Il existe 3 types de branches avec git flow:
+	- les features sur lesquelles nous developpons de nouvelles fonctionalités, une fois terminée cette branche sera mergée sur la branche develop
+	- les hotfix sont crées à partir de master, elles permettent de corriger des bugs de production, une fois la correction effectuée la branche hotfix devra être mergée dans la branche develop et dans la branche master
+	- les releases correspondent à une version du projet finis, elle sont crées à partir de la branche develop une fois fois que toutes les fonctionnalitées ont été developpées, elles permettent de tester la version du projet en question, lorsque la branche release est terminée, elle doit être mergée dans develop puis dans master.
 
+Il faut se placer sur la branche develop:
+$git flow feature start <nom de la branche feature> 
+
+11- D'autres outils:
 
 
